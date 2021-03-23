@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.myopendoor.R;
+import com.example.myopendoor.accueil;
 import com.example.myopendoor.ui.login.LoginViewModel;
 import com.example.myopendoor.ui.login.LoginViewModelFactory;
 
@@ -127,5 +129,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
+    }
+
+    public void Accueil (View view){
+        Intent intent = new Intent(this, accueil.class);
+        startActivity(intent);
+        finish();
     }
 }

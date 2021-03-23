@@ -11,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".liste"></activity>
         <activity
             android:name=".MainActivity2"
             android:label="@string/title_activity_main2"
@@ -18,7 +19,12 @@
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="@string/title_activity_login" />
+<<<<<<< HEAD
         <activity android:name=".MainActivity">
+=======
+        <activity android:name=".MainActivity" />
+        <activity android:name=".accueil">
+>>>>>>> 6c84bb61e6ac2501ccfeb79984f0a4106bd20551
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
