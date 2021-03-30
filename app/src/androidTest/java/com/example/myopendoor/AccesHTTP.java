@@ -1,26 +1,34 @@
 package com.example.myopendoor;
 
+import android.os.AsyncTask;
 import android.util.Log;
 
 import androidx.test.espresso.base.Default;
 
 import com.example.myopendoor.data.model.AsyncResponse;
 
+import org.apache.http.HttpResponse;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.http.util.EntityUtils;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
-public class AccesHTTP extends AsyncResponse<String, Integer, Long>{
+public class AccesHTTP extends AsyncTask<String, Integer, Long> {
 
     private ArrayList<NameValuePair> parametres;
+    private String ret = null;
+    private AsyncResponse delegate = null;
 
     public AccesHTTP(){
-        parametres = new ArrayList<NameValuePair>()
+        parametres = new ArrayList<NameValuePair>();
     }
 
 
@@ -41,12 +49,25 @@ public class AccesHTTP extends AsyncResponse<String, Integer, Long>{
         HttpClient cnxHttp = new DefaultHttpClient();
         HttpPost paramCnx = new HttpPost(strings[0]);
 
+
         try {
             paramCnx.setEntity(new UrlEncodedFormEntity(parametres));
+            HttpResponse reponse = cnxHttp.execute(paramCnx);
+            ret = EntityUtils.toString(reponse.getEntity());
+
         } catch (UnsupportedEncodingException e){
             Log.d("Erreur encodage", "++++++++++++++"+e.toString());
+        } catch (ClientProtocolException e){
+            Log.d("Erreur protocole", "++++++++++++++"+e.toString());
+        } catch (IOException e){
+            Log.d("Erreur I/O", "++++++++++++++"+e.toString());
         }
 
         return null;
+    }
+
+
+    protected void onPostExcecute(Long result){
+        delegate.processFinish((ret.toString()));
     }
 }
