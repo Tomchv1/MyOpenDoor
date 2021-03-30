@@ -1,5 +1,6 @@
 package com.example.myopendoor;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.android.volley.RequestQueue;
@@ -21,27 +22,16 @@ import com.example.myopendoor.ui.main.SectionsPagerAdapter;
 
 public class MainActivity2 extends AppCompatActivity {
     private TextView mTextViewResult;
-    private RequestQueue mQueue;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
-
-        mTextViewResult = findViewById(R.id.text_view_result);
-        Button buttonParse = findViewById(R.id.button_parse);
-
-        mQueue = Volley.newRequestQueue(this);
-
-        buttonParse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                jsonParse();
-            }
-        });
+        setContentView(R.layout.activity_main);
     }
-    private void jsonParse(){
-        String url = "https://api.myjson.com/bins/";
+
+    public void Accueil (View view){
+        Intent intent = new Intent(this, accueil.class);
+        startActivity(intent);
+        finish();
     }
 }
 
