@@ -1,8 +1,8 @@
 package com.example.myopendoor;
 
-import android.net.http.RequestQueue;
 import android.os.Bundle;
 
+import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
@@ -41,7 +41,7 @@ public class MainActivity2 extends AppCompatActivity {
         });
     }
     private void jsonParse(){
-        String url = "https://api.myjson.com/bins/"
+        String url = "https://api.myjson.com/bins/";
     }
 }
 

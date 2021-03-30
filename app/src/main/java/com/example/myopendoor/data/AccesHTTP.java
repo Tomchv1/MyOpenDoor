@@ -58,7 +58,7 @@ public class AccesHTTP extends AsyncTask<String, Integer, Long> {
             //encodage des paramètres
             paramCnx.setEntity(new UrlEncodedFormEntity(parametres));
             HttpResponse response = cnxHttp.execute(paramCnx);
-            ret = EntityUtils.toString(reponse.getEntity);
+            ret = EntityUtils.toString(response.getEntity);
 
         }
         catch (UnsupportedEncodingException e){
